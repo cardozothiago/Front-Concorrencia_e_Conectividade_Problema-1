@@ -7,12 +7,14 @@ export const ListItemStyled = styled(ListItem)`
   border-radius: 4px;
   border-width: 1px;
   border-left-width: 0px;
-  border-color: #8d8d8d;
-  margin-bottom: 1vh;
   display: flex;
+  flex-wrap: wrap;
+  width: "fit-content";
+  min-width: 190px;
 `;
 
 export const ColumnStyled = styled("div")`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
 `;

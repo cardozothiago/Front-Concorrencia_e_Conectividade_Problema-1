@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       <ContainerHeader>
         <TextHeader>{props.title}</TextHeader>
       </ContainerHeader>
-      <Divider variant="fullWidth" />
+      <Divider variant="fullWidth" sx={{ backgroundColor: "white" }} />
       {props.children}
     </>
   );

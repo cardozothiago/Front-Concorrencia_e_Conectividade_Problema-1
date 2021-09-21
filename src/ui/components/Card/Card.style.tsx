@@ -3,7 +3,9 @@ import { experimentalStyled as styled, Typography } from "@material-ui/core";
 export const ContainerCard = styled("div")`
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: auto;
+  width: auto;
+  min-width: 30vw;
   border-radius: 4px;
   box-shadow: 0px 0px 7px grey;
 `;

@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = (props) => {
   if (props.situation.toUpperCase() == "ESTÁVEL") {
     return (
       <>
-        <ContainerCard sx={{ backgroundColor: "#a4ddfa" }}>
+        <ContainerCard sx={{ backgroundColor: "#509253" }}>
           <TextCard
             sx={{
               fontSize: "1.5rem",

@@ -6,23 +6,29 @@ import {
 import React from "react";
 import { ListItemStyled, ColumnStyled } from "./ListItem.style";
 import PersonIcon from "@material-ui/icons/Person";
-
+import { PatientInterface } from "data/@types/patientInterface";
 interface ListItemProps {
-  name: string;
-  situation: string;
+  patient: PatientInterface;
 }
 
 const ListItem: React.FC<ListItemProps> = (props) => {
-  if (props.situation.toUpperCase() == "ESTÁVEL") {
+  if (props.patient.situation.toUpperCase() == "ESTÁVEL") {
     return (
-      <ListItemStyled role="button">
+      <ListItemStyled sx={{ backgroundColor: "#509253" }}>
         <ListItemAvatar>
           <PersonIcon sx={{ fontSize: "3rem" }} />
         </ListItemAvatar>
         <ColumnStyled>
-          <Typography sx={{ fontSize: "1.5rem" }}>{props.name}</Typography>
+          <Typography
+            sx={{ fontSize: "1.2rem", margin: "0px", padding: "0px" }}
+          >
+            {props.patient.name}
+          </Typography>
           <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
-            {props.situation.toUpperCase()}
+            {"Situação: " + props.patient.situation.toUpperCase()}
+          </Typography>
+          <Typography variant="caption" sx={{ fontSize: "0.75rem" }}>
+            {"Oxigenação: " + props.patient.oxigen + "%"}
           </Typography>
         </ColumnStyled>
         <ListItemSecondaryAction>{props.children}</ListItemSecondaryAction>
@@ -30,17 +36,27 @@ const ListItem: React.FC<ListItemProps> = (props) => {
     );
   } else {
     return (
-      <ListItemStyled sx={{ backgroundColor: "#ffc107" }} role="button">
+      <ListItemStyled sx={{ backgroundColor: "#ffc107" }}>
         <ListItemAvatar>
           <PersonIcon sx={{ fontSize: "3rem" }} />
         </ListItemAvatar>
         <ColumnStyled>
-          <Typography sx={{ fontSize: "1.5rem" }}>{props.name}</Typography>
+          <Typography
+            sx={{ fontSize: "1.2rem", margin: "0px", padding: "0px" }}
+          >
+            {props.patient.name}
+          </Typography>
           <Typography
             variant="caption"
             sx={{ fontSize: "0.75rem", color: "#dc3545" }}
           >
-            {props.situation.toUpperCase()}
+            {"Situação: " + props.patient.situation.toUpperCase()}
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{ fontSize: "0.75rem", color: "#dc3545" }}
+          >
+            {"Oxigenação: " + props.patient.oxigen + "%"}
           </Typography>
         </ColumnStyled>
         <ListItemSecondaryAction>{props.children}</ListItemSecondaryAction>

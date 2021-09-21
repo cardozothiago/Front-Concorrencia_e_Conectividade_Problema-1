@@ -12,4 +12,5 @@ export const TextHeader = styled(Typography)`
   font-size: 2.5rem;
   font-family: "Roboto Condensed", sans-serif;
   text-align: center;
+  color: white;
 `;
