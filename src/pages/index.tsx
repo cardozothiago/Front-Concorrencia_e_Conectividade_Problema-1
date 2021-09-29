@@ -15,8 +15,7 @@ import PageviewIcon from "@material-ui/icons/Pageview";
 import Card from "ui/components/Card/Card";
 import FilterField from "ui/components/FilterField/FilterField";
 
-export default function Home(props) {
-  const { classes } = props;
+export default function Home() {
   const {
     patients,
     onClickButtonHandle,
@@ -25,6 +24,9 @@ export default function Home(props) {
     webSocketConnection,
     con,
     setClicked,
+    filterQtd,
+    setFilterQtd,
+    filterPatients,
   } = useIndex();
 
   useEffect(() => {
@@ -120,10 +122,13 @@ export default function Home(props) {
               type="number"
               label="Filtrar quantidade de pacientes"
               inputProps={{ min: 1 }}
+              value={filterQtd}
+              onChange={(event) => setFilterQtd(event.target.value)}
             ></FilterField>
             <Button
               variant="contained"
               sx={{ marginTop: "10px", borderRadius: "4px" }}
+              onClick={() => filterPatients(filterQtd)}
             >
               Filtrar
             </Button>
