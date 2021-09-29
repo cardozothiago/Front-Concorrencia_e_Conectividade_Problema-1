@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { Container, IconButton, Collapse, Typography } from "@material-ui/core";
+import {
+  Container,
+  IconButton,
+  Collapse,
+  Typography,
+  Button,
+} from "@material-ui/core";
 import Header from "ui/components/Header/Header";
 import List from "ui/components/List/List";
 import ListItem from "ui/components/ListItem/ListItem";
@@ -7,8 +13,10 @@ import { useIndex } from "data/hooks/useIndex";
 import { useMemo } from "react";
 import PageviewIcon from "@material-ui/icons/Pageview";
 import Card from "ui/components/Card/Card";
-import { grid } from "@material-ui/system";
-export default function Home() {
+import FilterField from "ui/components/FilterField/FilterField";
+
+export default function Home(props) {
+  const { classes } = props;
   const {
     patients,
     onClickButtonHandle,
@@ -35,16 +43,15 @@ export default function Home() {
   return (
     <>
       <Header title="Monitoramento de Pacientes"></Header>
+
       <Container
         sx={{
-          /*display: "flex",
-          
-          ,*/
           justifyContent: "space-between",
           display: "grid",
           alignItems: "center",
-          grid: "80vh/5fr 5fr",
+          grid: "70vh 10vh/5fr 5fr",
           gap: "10px",
+          gridTemplateAreas: "'patients card' 'filter card' ",
           maxWidth: "auto",
         }}
       >
@@ -79,9 +86,9 @@ export default function Home() {
           in={isClicked}
           sx={{
             marginTop: "5vh",
-            //width: "30vw",
             height: "fit-content",
             borderRadius: "4px",
+            gridArea: "card",
           }}
         >
           {clicked ? (
@@ -95,11 +102,30 @@ export default function Home() {
               situation={clicked.situation}
             ></Card>
           ) : (
-            <Typography sx={{ color: "white" }}>
-              Nenhum dado de pacientes no momento
-            </Typography>
+            <Typography>Nenhum dado de pacientes no momento</Typography>
           )}
         </Collapse>
+
+        <div
+          style={{
+            marginTop: "20px",
+            gridArea: "filter",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <FilterField
+            type="number"
+            label="Filtrar quantidade de pacientes"
+            inputProps={{ min: 1 }}
+          ></FilterField>
+          <Button
+            variant="contained"
+            sx={{ marginTop: "10px", borderRadius: "4px" }}
+          >
+            Filtrar
+          </Button>
+        </div>
       </Container>
     </>
   );

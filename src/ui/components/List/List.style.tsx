@@ -24,7 +24,7 @@ export const ListStyled = styled(List)`
     background: #0575ad;
   }
   ::-webkit-scrollbar-track {
-    background: #202020;
+    background: #282828;
     border-radius: 0px;
   }
 `;
