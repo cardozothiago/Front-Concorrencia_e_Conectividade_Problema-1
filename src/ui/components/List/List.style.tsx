@@ -7,7 +7,7 @@ export const ListStyled = styled(List)`
   width: auto;
   overflow: auto;
   height: auto;
-  max-height: 70vh;
+  max-height: 60vh;
   box-shadow: 0px 0px 7px grey;
   border-radius: 4px;
   padding: 0px;

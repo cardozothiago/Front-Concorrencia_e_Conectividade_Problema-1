@@ -55,9 +55,9 @@ export default function Home(props) {
           maxWidth: "auto",
         }}
       >
-        <List>
-          {patients ? (
-            patients.map((patient, index) => {
+        {patients ? (
+          <List>
+            {patients.map((patient, index) => {
               return (
                 <ListItem key={index} patient={patient}>
                   <IconButton
@@ -75,13 +75,14 @@ export default function Home(props) {
                   </IconButton>
                 </ListItem>
               );
-            })
-          ) : (
-            <Typography sx={{ textAlign: "center", color: "white" }}>
-              Nenhum dado de pacientes no momento
-            </Typography>
-          )}
-        </List>
+            })}
+          </List>
+        ) : (
+          <Typography sx={{ textAlign: "center", color: "white" }}>
+            Nenhum dado de pacientes no momento
+          </Typography>
+        )}
+
         <Collapse
           in={isClicked}
           sx={{
@@ -106,26 +107,30 @@ export default function Home(props) {
           )}
         </Collapse>
 
-        <div
-          style={{
-            marginTop: "20px",
-            gridArea: "filter",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <FilterField
-            type="number"
-            label="Filtrar quantidade de pacientes"
-            inputProps={{ min: 1 }}
-          ></FilterField>
-          <Button
-            variant="contained"
-            sx={{ marginTop: "10px", borderRadius: "4px" }}
+        {patients ? (
+          <div
+            style={{
+              marginTop: "20px",
+              gridArea: "filter",
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
-            Filtrar
-          </Button>
-        </div>
+            <FilterField
+              type="number"
+              label="Filtrar quantidade de pacientes"
+              inputProps={{ min: 1 }}
+            ></FilterField>
+            <Button
+              variant="contained"
+              sx={{ marginTop: "10px", borderRadius: "4px" }}
+            >
+              Filtrar
+            </Button>
+          </div>
+        ) : (
+          <Typography></Typography>
+        )}
       </Container>
     </>
   );
