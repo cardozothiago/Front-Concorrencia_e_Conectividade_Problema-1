@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Concorrência e Conectividade Problema 1 
 
-## Getting Started
+## Requisitos para roda a solução
+Para roda a solução é necessário o gerenciador de dependências **NPM**  e o software **Node.Js**
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Instalando as Dependências
+Após baixar o conteúdo dos dois repositórios:  [Back-Concorrencia e Conectividade Problema 1](https://github.com/Kadozo/Back-Concorrencia_e_Conectividade_Problema-1.git) e [Front-Concorrencia e Conectividade Problema 1](https://github.com/Kadozo/Front-Concorrencia_e_Conectividade_Problema-1.git)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+É necessário utilizar o comando, nas duas pastas raízes (de cada repositório) 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+>npm install
+ 
+Para instalar todas as dependências do projeto. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Iniciando a interface do médico
+Para iniciar a interface do médico é necessário, na pasta raiz, digitar os comandos 
+>npm run build
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+E em seguida:
 
-## Learn More
+>npm run start
 
-To learn more about Next.js, take a look at the following resources:
+A aplicação iniciará na porta 3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Arquivos de Servidor e Paciente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Os arquivos do repositório [Back-Concorrencia e Conectividade Problema 1](https://github.com/Kadozo/Back-Concorrencia_e_Conectividade_Problema-1.git)
+dizem respeito ao servidor, e ao simulador de sensores, respectivamente os arquivos: **Server.js** e **paciente.js**
 
-## Deploy on Vercel
+para inicia-los, basta digitar o comando do node:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+>node server.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+para iniciar o servidor
+>node paciente.js
+
+para iniciar um instância de sensores simulados, para iniciar mais de uma instância de servidor basta digitar o comando acima mais de uma vez.
