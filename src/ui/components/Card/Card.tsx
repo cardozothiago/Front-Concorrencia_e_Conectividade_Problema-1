@@ -3,7 +3,7 @@ import { ContainerCard, TextCard } from "./Card.style";
 
 interface CardProps {
   name: string;
-  freqCorp: number;
+  tempCorp: number;
   freqResp: number;
   freqCard: number;
   presArt: number;
@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = (props) => {
             {props.situation.toUpperCase()}
           </TextCard>
           <TextCard>
-            {"Temperatura Corporal: " + props.freqCorp + " ºC."}
+            {"Temperatura Corporal: " + props.tempCorp + " ºC."}
           </TextCard>
           <TextCard>
             {"Frequencia Respiratória: " + props.freqResp + " Mpm."}
@@ -62,7 +62,7 @@ const Card: React.FC<CardProps> = (props) => {
             {props.situation.toUpperCase()}
           </TextCard>
           <TextCard>
-            {"Temperatura Corporal: " + props.freqCorp + " ºC."}
+            {"Temperatura Corporal: " + props.tempCorp + " ºC."}
           </TextCard>
           <TextCard>
             {"Frequencia Respiratória: " + props.freqResp + " Mpm."}

@@ -1,6 +1,6 @@
 export interface PatientInterface {
   name: string;
-  freqCorp: number;
+  tempCorp: number;
   freqResp: number;
   freqCard: number;
   presArt: number;

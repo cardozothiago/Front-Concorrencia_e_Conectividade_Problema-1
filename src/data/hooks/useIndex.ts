@@ -27,12 +27,12 @@ export function useIndex() {
 
   async function webSocketConnection() {
     try {
-      const { data } = await ApiService.get("");
+      const { data } = await ApiService.get("/patients");
       console.log(data);
       setPatients(data);
       setTimeout(() => {
         setCon(!con);
-      }, 10000);
+      }, 2000);
     } catch (error) {
       console.log(
         "Erro ao se reconectar ao servidor. Tentando novamente em 10 segundos..."
@@ -44,7 +44,10 @@ export function useIndex() {
   }
 
   async function filterPatients(qtd: string) {
-    //ApiService.post("", { amount: qtd });
+    await ApiService.post("/filter", { amount: qtd });
+    const { data } = await ApiService.get("/patients");
+    console.log(data);
+    setPatients(data);
     console.log(qtd);
   }
 

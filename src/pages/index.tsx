@@ -97,7 +97,7 @@ export default function Home() {
           {clicked ? (
             <Card
               name={clicked.name}
-              freqCorp={clicked.freqCorp}
+              tempCorp={clicked.tempCorp}
               freqResp={clicked.freqResp}
               freqCard={clicked.freqCard}
               presArt={clicked.presArt}
