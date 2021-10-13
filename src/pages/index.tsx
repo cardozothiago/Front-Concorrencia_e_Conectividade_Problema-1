@@ -23,17 +23,25 @@ export default function Home() {
     isClicked,
     webSocketConnection,
     con,
+    fixedCon,
     setClicked,
     filterQtd,
     setFilterQtd,
     filterPatients,
+    getPatientInfo,
   } = useIndex();
 
   useEffect(() => {
     webSocketConnection();
   }, [con]);
 
-  useMemo(() => {
+  useEffect(() => {
+    if (clicked) {
+      getPatientInfo(clicked.FogId, clicked.name);
+    }
+  }, [fixedCon]);
+
+  /*useMemo(() => {
     if (clicked) {
       patients.map((patient) => {
         if (patient.name == clicked.name) {
@@ -41,7 +49,8 @@ export default function Home() {
         }
       });
     }
-  }, [patients]);
+  }, [patients]);*/
+
   return (
     <>
       <Header title="Monitoramento de Pacientes"></Header>

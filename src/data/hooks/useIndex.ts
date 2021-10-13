@@ -8,6 +8,7 @@ export function useIndex() {
   const [clicked, setClicked] = useState<FixedPatientInterface>(null);
   const [isClicked, setIsClicked] = useState(false);
   const [con, setCon] = useState(false);
+  const [fixedCon, setFixedCon] = useState(false);
   const [filterQtd, setFilterQtd] = useState("");
 
   async function onClickButtonHandle(index: number) {
@@ -21,7 +22,10 @@ export function useIndex() {
         setTimeout(() => setIsClicked(true), 300);
       } else {
         setIsClicked(false);
-        //setTimeout(() => setClicked(patients[index]), 300);
+        setTimeout(
+          () => getPatientInfo(patients[index].FogId, patients[index].name),
+          300
+        );
         setTimeout(() => setIsClicked(true), 400);
       }
     }
@@ -54,11 +58,16 @@ export function useIndex() {
   }
 
   async function getPatientInfo(fogId: number, name: string) {
-    const { data } = await ApiService.post("/fixedPatient", {
-      fogId: fogId,
-      name: name,
-    });
-    console.log(data);
+    try {
+      const { data } = await ApiService.post("/fixedPatient", {
+        fogId: fogId,
+        name: name,
+      });
+      setClicked(data);
+      setTimeout(() => {
+        setFixedCon(!fixedCon);
+      }, 1000);
+    } catch (error) {}
   }
 
   return {
@@ -68,9 +77,11 @@ export function useIndex() {
     isClicked,
     webSocketConnection,
     con,
+    fixedCon,
     setClicked,
     filterQtd,
     setFilterQtd,
     filterPatients,
+    getPatientInfo,
   };
 }
