@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { PatientInterface } from "data/@types/patientInterface";
 import { ApiService } from "data/services/apiService";
+import { FixedPatientInterface } from "data/@types/fixedPatientInterface";
 
 export function useIndex() {
   const [patients, setPatients] = useState<PatientInterface[]>();
-  const [clicked, setClicked] = useState<PatientInterface>(null);
+  const [clicked, setClicked] = useState<FixedPatientInterface>(null);
   const [isClicked, setIsClicked] = useState(false);
   const [con, setCon] = useState(false);
   const [filterQtd, setFilterQtd] = useState("");
@@ -15,11 +16,12 @@ export function useIndex() {
       setTimeout(() => setClicked(null), 500);
     } else {
       if (clicked === null) {
-        setClicked(patients[index]);
+        //setClicked(patients[index]);
+        getPatientInfo(patients[index].FogId, patients[index].name);
         setTimeout(() => setIsClicked(true), 300);
       } else {
         setIsClicked(false);
-        setTimeout(() => setClicked(patients[index]), 300);
+        //setTimeout(() => setClicked(patients[index]), 300);
         setTimeout(() => setIsClicked(true), 400);
       }
     }
@@ -49,6 +51,14 @@ export function useIndex() {
     console.log(data);
     setPatients(data);
     console.log(qtd);
+  }
+
+  async function getPatientInfo(fogId: number, name: string) {
+    const { data } = await ApiService.post("/fixedPatient", {
+      fogId: fogId,
+      name: name,
+    });
+    console.log(data);
   }
 
   return {

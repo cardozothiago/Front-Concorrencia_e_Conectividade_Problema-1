@@ -1,9 +1,6 @@
 export interface PatientInterface {
   name: string;
-  tempCorp: number;
-  freqResp: number;
-  freqCard: number;
-  presArt: number;
+  FogId: number;
   oxigen: number;
   situation: string;
 }
