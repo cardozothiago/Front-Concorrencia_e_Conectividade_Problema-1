@@ -1,6 +1,6 @@
 export interface PatientInterface {
   name: string;
-  FogId: number;
+  fogId: string;
   oxigen: number;
   situation: string;
 }

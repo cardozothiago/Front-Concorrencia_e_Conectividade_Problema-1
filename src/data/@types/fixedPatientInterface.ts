@@ -1,6 +1,6 @@
 export interface FixedPatientInterface {
   name: string;
-  FogId: number;
+  fogId: string;
   tempCorp: number;
   freqResp: number;
   freqCard: number;

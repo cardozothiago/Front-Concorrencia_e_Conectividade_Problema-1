@@ -37,7 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     if (clicked) {
-      getPatientInfo(clicked.FogId, clicked.name);
+      getPatientInfo(clicked.fogId, clicked.name);
     }
   }, [fixedCon]);
 

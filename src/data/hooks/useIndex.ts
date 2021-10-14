@@ -17,13 +17,12 @@ export function useIndex() {
       setTimeout(() => setClicked(null), 500);
     } else {
       if (clicked === null) {
-        //setClicked(patients[index]);
-        getPatientInfo(patients[index].FogId, patients[index].name);
+        getPatientInfo(patients[index].fogId, patients[index].name);
         setTimeout(() => setIsClicked(true), 300);
       } else {
         setIsClicked(false);
         setTimeout(
-          () => getPatientInfo(patients[index].FogId, patients[index].name),
+          () => getPatientInfo(patients[index].fogId, patients[index].name),
           300
         );
         setTimeout(() => setIsClicked(true), 400);
@@ -34,7 +33,6 @@ export function useIndex() {
   async function webSocketConnection() {
     try {
       const { data } = await ApiService.get("/patients");
-      console.log(data);
       setPatients(data);
       setTimeout(() => {
         setCon(!con);
@@ -52,13 +50,12 @@ export function useIndex() {
   async function filterPatients(qtd: string) {
     await ApiService.post("/filter", { amount: qtd });
     const { data } = await ApiService.get("/patients");
-    console.log(data);
     setPatients(data);
-    console.log(qtd);
   }
 
-  async function getPatientInfo(fogId: number, name: string) {
+  async function getPatientInfo(fogId: string, name: string) {
     try {
+      console.log(name);
       const { data } = await ApiService.post("/fixedPatient", {
         fogId: fogId,
         name: name,
